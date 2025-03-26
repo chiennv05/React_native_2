@@ -1,0 +1,34 @@
+{
+  "product_tree": [
+    {
+      "id": "1",
+      "image": "https://noithatduckhang.com/img/uploads/images/phongthuy/T8-2018/cay-day-nhen-thuy-sinh-2.jpg",
+      "name": "Spider Plant",
+      "status": "Ưa bóng",
+      "price": "250.000"
+    },
+
+    {
+      "id": "2",
+      "image": "https://www.thespruce.com/thmb/ey-O-Dm6HMCJ90fADxUKOi-x4f0=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/growing-the-song-of-india-5087083-5-96244da89c8a4053a6d4c79207bdaf49.jpg",
+      "name": "Song of India",
+      "status": "Ưa sáng",
+      "price": "250.000"
+    }
+  ],
+  "product_pot": [
+    {
+      "id": "1",
+      "image": "https://thegioicaycanhsaigon.com/images/stories/virtuemart/product/resized/chau-bom-gom-su-bat-trang-trang-d35h45_450x600.jpg",
+      "name": "Planta Trắng",
+      "price": "250.000"
+    },
+
+    {
+      "id": "2",
+      "image": "https://bancongxanh.com/wp-content/uploads/2022/04/Chau-nhua-trong-cay-2-day-PY-dk-27.8-x-cao-28cm.jpg",
+      "name": "Planta Lemon Balm",
+      "price": "250.000"
+    }
+  ]
+}
