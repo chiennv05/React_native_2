@@ -4,15 +4,20 @@
       "id": "1",
       "image": "https://noithatduckhang.com/img/uploads/images/phongthuy/T8-2018/cay-day-nhen-thuy-sinh-2.jpg",
       "name": "Spider Plant",
-      "status": "Ưa bóng",
+      "onffo": "Ưa bóng",
+      "status": "Còn 156 sp",
+      "size": "nhỏ",
+      "origin": "Châu phi",
       "price": "250.000"
     },
-
     {
       "id": "2",
       "image": "https://www.thespruce.com/thmb/ey-O-Dm6HMCJ90fADxUKOi-x4f0=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/growing-the-song-of-india-5087083-5-96244da89c8a4053a6d4c79207bdaf49.jpg",
       "name": "Song of India",
-      "status": "Ưa sáng",
+      "onffo": "Ưa bóng",
+      "status": "Còn 156 sp",
+      "size": "nhỏ",
+      "origin": "Châu phi",
       "price": "250.000"
     }
   ],
@@ -23,12 +28,116 @@
       "name": "Planta Trắng",
       "price": "250.000"
     },
-
     {
       "id": "2",
       "image": "https://bancongxanh.com/wp-content/uploads/2022/04/Chau-nhua-trong-cay-2-day-PY-dk-27.8-x-cao-28cm.jpg",
       "name": "Planta Lemon Balm",
       "price": "250.000"
+    }
+  ],
+  "product_tools": [
+    {
+      "id": "1",
+      "image": "https://sieuthithietbi.com/products/bo-dung-cu-lam-vuon-4-chi-tiet-truper-15030-jj-4.jpg",
+      "name": "Xẻng",
+      "price": "250.000"
+    },
+    {
+      "id": "2",
+      "image": "https://sieuthithietbi.com/products/bo-dung-cu-lam-vuon-4-chi-tiet-truper-15030-jj-4.jpg",
+      "name": "Cào",
+      "price": "250.000"
+    }
+  ],
+  "LOGIN": [
+    {
+      "id": "1",
+      "name": "chien",
+      "email": "johndoe@example.com",
+      "pass": "12345",
+      "phone": "0987654321"
+    },
+    {
+      "id": "5b75",
+      "email": "chein@gmail.com",
+      "name": "chein",
+      "pass": "123",
+      "phone": "0987654321"
+    },
+    {
+      "id": "7b0c",
+      "username": "chien",
+      "password": "12345"
+    },
+    {
+      "id": "1397",
+      "username": "chien",
+      "password": "123456"
+    },
+    {
+      "id": "dbe7",
+      "username": "chien",
+      "password": "123456"
+    },
+    {
+      "id": "7490",
+      "username": "chien",
+      "password": "123456"
+    },
+    {
+      "id": "a2b2",
+      "username": "chien",
+      "password": "123456"
+    },
+    {
+      "id": "2bde",
+      "username": "chien",
+      "password": "123456"
+    },
+    {
+      "id": "6ac9",
+      "username": "chien",
+      "password": "123456"
+    },
+    {
+      "id": "175e",
+      "username": "chien",
+      "password": "123456"
+    },
+    {
+      "id": "196e",
+      "username": "chien",
+      "password": "123456"
+    },
+    {
+      "id": "3e56",
+      "username": "c",
+      "password": "1"
+    },
+    {
+      "id": "c42b",
+      "username": "d",
+      "password": "a"
+    },
+    {
+      "id": "2df9",
+      "username": "c",
+      "password": "123"
+    },
+    {
+      "id": "02b7",
+      "username": "chien",
+      "password": "123"
+    },
+    {
+      "id": "75e9",
+      "username": "chien",
+      "password": "123"
+    },
+    {
+      "id": "b48f",
+      "username": "chien",
+      "password": "12345"
     }
   ]
 }

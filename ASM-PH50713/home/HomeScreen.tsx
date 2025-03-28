@@ -2,22 +2,27 @@ import {
   FlatList,
   Image,
   SafeAreaView,
-  ScrollView, // Thêm ScrollView
+  ScrollView,
   StyleSheet,
   Text,
   View,
+  TouchableOpacity,
 } from "react-native";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { MaterialIcons } from "@expo/vector-icons";
 import { StatusBar } from "expo-status-bar";
+import { useNavigation } from "@react-navigation/native";
 
 const HomeScreen = () => {
   const [productTree, setProductTree] = useState([]);
   const [productPot, setProductPot] = useState([]);
+  const [productToolst, setProductToolst] = useState([]);
+  const navigation = useNavigation();
 
   const apiTree = "http://192.168.31.245:3000/product_tree";
   const apiPot = "http://192.168.31.245:3000/product_pot";
+  const apiToolst = "http://192.168.31.245:3000/product_tools";
 
   useEffect(() => {
     console.log("Loading...");
@@ -26,28 +31,28 @@ const HomeScreen = () => {
 
   const getList = async () => {
     try {
-      const [treeRes, potRes] = await Promise.all([
+      const [treeRes, potRes, toolsRes] = await Promise.all([
         axios.get(apiTree),
         axios.get(apiPot),
+        axios.get(apiToolst),
       ]);
-
-      //   console.log("Dữ liệu cây:", treeRes.data);
-      //   console.log("Dữ liệu chậu:", potRes.data);
-
       setProductTree(treeRes.data);
       setProductPot(potRes.data);
+      setProductToolst(toolsRes.data);
     } catch (error) {
       console.error("Lỗi khi tải dữ liệu", error);
     }
   };
-
   const renderItem = ({ item }) => (
-    <View style={styles.card}>
+    <TouchableOpacity
+      style={styles.card}
+      onPress={() => navigation.navigate("Detail", { product: item })}
+    >
       <Image source={{ uri: item.image }} style={styles.image} />
       <Text style={styles.name}>{item.name}</Text>
-      <Text style={styles.status}>{item.status}</Text>
+      {item.onffo && <Text style={styles.status}>{item.onffo}</Text>}
       <Text style={styles.price}>{item.price}đ</Text>
-    </View>
+    </TouchableOpacity>
   );
 
   return (
@@ -60,7 +65,11 @@ const HomeScreen = () => {
             <Text style={{ fontWeight: "bold" }}>không gian nhà bạn</Text>
           </Text>
           <View style={styles.cartContainer}>
-            <MaterialIcons name="shopping-cart" size={24} color="black" />
+            <TouchableOpacity
+              onPress={() => navigation.navigate("GioHang")} // Điều hướng tới "Giỏ hàng"
+            >
+              <MaterialIcons name="shopping-cart" size={24} color="black" />
+            </TouchableOpacity>
           </View>
         </View>
         <Image
@@ -75,8 +84,13 @@ const HomeScreen = () => {
             renderItem={renderItem}
             keyExtractor={(item) => item.id.toString()}
             numColumns={2}
-            scrollEnabled={false} // Không cho cuộn vì ScrollView đã bao quanh
+            scrollEnabled={false}
           />
+          <TouchableOpacity
+            onPress={() => navigation.navigate("TreeScreen", { productTree })}
+          >
+            <Text style={styles.viewMore}>Xem thêm cây trồng</Text>
+          </TouchableOpacity>
 
           <Text style={styles.sectionTitle}>Chậu cây trồng</Text>
           <FlatList
@@ -84,14 +98,43 @@ const HomeScreen = () => {
             renderItem={renderItem}
             keyExtractor={(item) => item.id.toString()}
             numColumns={2}
-            scrollEnabled={false} // Không cho cuộn vì ScrollView đã bao quanh
+            scrollEnabled={false}
           />
-          <Text style={styles.viewMore}>Xem thêm Phụ kiện</Text>
+        </View>
+        <View style={styles.buttontext}>
+          <TouchableOpacity
+            onPress={() => {
+              navigation.navigate("PotScreen", { productPot });
+            }}
+          >
+            <Text style={styles.viewMore}>Xem thêm Phụ kiện</Text>
+          </TouchableOpacity>
+
+          <FlatList
+            data={productToolst}
+            renderItem={renderItem}
+            keyExtractor={(item) => item.id.toString()}
+            numColumns={2}
+            scrollEnabled={false}
+          />
+        </View>
+        <View style={styles.buttontext}>
+          <TouchableOpacity
+            onPress={() => {
+              navigation.navigate("ToolsSecreen", { productToolst });
+            }}
+          >
+            <Text style={styles.viewMore}>Xem thêm dụng cụ</Text>
+          </TouchableOpacity>
+
           <Text>Sản phẩm mới</Text>
           <View style={styles.spNew}>
-            <View>
-              <Text>Lemon Balm Grow Kit</Text>
-              <Text>Gồm: hạt giống Lemon Balm,đánh dấu.</Text>
+            <View style={styles.textContainer}>
+              <Text style={{ fontWeight: "bold" }}>Lemon Balm Grow Kit</Text>
+              <Text>
+                Gồm: hạt giống Lemon Balm, gói đất hữu cơ, chậu Planta, marker
+                đánh dấu...
+              </Text>
             </View>
             <Image source={require("../assets/images/buttonbanner.png")} />
           </View>
@@ -134,17 +177,20 @@ const styles = StyleSheet.create({
   sectionTitle: {
     fontSize: 18,
     fontWeight: "bold",
-
     marginTop: 10,
   },
   card: {
     flex: 1,
     justifyContent: "center",
+
+    margin: 10,
+
+    borderRadius: 10,
+    shadowColor: "#000",
   },
   image: {
-    width: 170,
-    height: 145,
-
+    width: 150,
+    height: 140,
     borderRadius: 5,
   },
   name: {
@@ -163,22 +209,31 @@ const styles = StyleSheet.create({
   list: {
     padding: 20,
   },
+  buttontext: {
+    paddingLeft: 20,
+    marginRight: 20,
+  },
   viewMore: {
     textDecorationLine: "underline",
     alignSelf: "flex-end",
     fontSize: 16,
     marginTop: 10,
-
-    marginBottom: 20, // Thêm khoảng cách dưới cùng
   },
   spNew: {
     flexDirection: "row",
-
     alignItems: "center",
-    marginBottom: 20,
-
     backgroundColor: "gray",
-
-    borderRadius: 5,
+    borderRadius: 10, // Bo góc nhiều hơn cho mềm mại
+    padding: 10, // Tạo khoảng cách bên trong
+    marginTop: 10, // Khoảng cách với phần trên
+  },
+  textContainer: {
+    flex: 1, // Để text chiếm toàn bộ không gian bên trái
+    paddingRight: 10, // Tạo khoảng cách giữa chữ và ảnh
+  },
+  imageStyle: {
+    width: 80, // Điều chỉnh kích thước ảnh
+    height: 80,
+    borderRadius: 10, // Bo góc ảnh nếu cần
   },
 });

@@ -11,12 +11,44 @@ import {
 } from "react-native";
 import React, { useState } from "react";
 import { MaterialIcons } from "@expo/vector-icons"; // Thư viện icon
+import { useNavigation } from "@react-navigation/native";
 
 const Register = () => {
   const [username, setUserName] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [isChecked, setIsChecked] = useState(false);
-  const [showPassword, setShowPassword] = useState(false);
+  const [phone, setPhone] = useState("");
+  const navigation = useNavigation();
+
+  const apiLogin = "http://192.168.31.245:3000/LOGIN";
+  const handleRegister = async () => {
+    if (!username || !email || !phone || !password) {
+      alert("Vui lòng nhập đầy đủ thông tin");
+      return;
+    }
+
+    try {
+      const response = await fetch(apiRegister, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ username, email, phone, password }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        alert("Đăng ký thành công");
+        navigation.navigate("Login");
+      } else {
+        alert(data.message || "Đăng ký thất bại");
+      }
+    } catch (error) {
+      console.log("Lỗi", error);
+      alert("Đã có lỗi xảy ra, vui lòng thử lại");
+    }
+  };
   return (
     <SafeAreaView style={styles.container}>
       <StatusBar translucent backgroundColor="transparent" />
@@ -31,8 +63,7 @@ const Register = () => {
         </Text>
         <TextInput
           style={styles.textInput}
-          placeholder="Nhập email hoặc số điện thoại"
-          secureTextEntry={true}
+          placeholder="Nhập tên"
           onChangeText={(text) => setUserName(text)}
           value={username}
         />
@@ -40,16 +71,14 @@ const Register = () => {
         <TextInput
           style={styles.textInput}
           placeholder="E-mail"
-          secureTextEntry={true} // Đổi trạng thái khi bấm icon
-          onChangeText={(text) => setPassword(text)}
-          value={password}
+          onChangeText={(text) => setEmail(text)}
+          value={email}
         />
         <TextInput
           style={styles.textInput}
           placeholder="Số điện thoại"
-          secureTextEntry={true} // Đổi trạng thái khi bấm icon
-          onChangeText={(text) => setPassword(text)}
-          value={password}
+          onChangeText={(text) => setPhone(text)}
+          value={phone}
         />
         <TextInput
           style={styles.textInput}
@@ -63,7 +92,7 @@ const Register = () => {
           Để đăng ký tài khoản, bạn đồng ý Terms & Conditions and Privacy Policy
         </Text>
 
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.navigate("Login")}>
           <Text style={styles.buttonLogin}>Đăng ký</Text>
         </TouchableOpacity>
         <View style={styles.and}>

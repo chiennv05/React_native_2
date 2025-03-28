@@ -8,17 +8,51 @@ import {
   Button,
   TouchableOpacity,
   StatusBar,
+  ScrollView,
 } from "react-native";
 import React, { useState } from "react";
 import { MaterialIcons } from "@expo/vector-icons"; // Thư viện icon
+import { useNavigation } from "@react-navigation/native";
 
 const Login = () => {
   const [username, setUserName] = useState("");
   const [password, setPassword] = useState("");
   const [isChecked, setIsChecked] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
+  const navigation = useNavigation();
+
+  const apiLogin = "http://192.168.31.245:3000/LOGIN"; // Thay bằng API thực tế
+
+  const handleLogin = async () => {
+    if (!username || !password) {
+      alert("Vui lòng nhập đầy đủ thông tin!");
+      return;
+    }
+
+    try {
+      const response = await fetch(apiLogin, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ username, password }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        alert("Đăng nhập thành công!");
+        navigation.navigate("AppHome");
+      } else {
+        alert(data.message || "Đăng nhập thất bại!");
+      }
+    } catch (error) {
+      console.error("Lỗi", error);
+      alert("Đã có lỗi xảy ra, vui lòng thử lại.");
+    }
+  };
   return (
-    <SafeAreaView style={styles.container}>
+    <ScrollView style={styles.container}>
       <StatusBar translucent backgroundColor="transparent" />
       <Image
         source={require("../assets/images/anhLogin.png")}
@@ -32,7 +66,6 @@ const Login = () => {
         <TextInput
           style={styles.textInput}
           placeholder="Nhập email hoặc số điện thoại"
-          secureTextEntry={true}
           onChangeText={(text) => setUserName(text)}
           value={username}
         />
@@ -57,6 +90,16 @@ const Login = () => {
             />
           </TouchableOpacity>
         </View>
+        <Text
+          style={{
+            color: "red",
+            textAlign: "left",
+            alignSelf: "flex-start",
+          }}
+        >
+          Invalid email or Password. Try Again!
+        </Text>
+
         <View style={styles.saveLogin}>
           <TouchableOpacity
             style={styles.radio}
@@ -78,7 +121,9 @@ const Login = () => {
           </TouchableOpacity>
         </View>
         <TouchableOpacity>
-          <Text style={styles.buttonLogin}>Đằng Nhập</Text>
+          <Text style={styles.buttonLogin} onPress={handleLogin}>
+            Đăng Nhập
+          </Text>
         </TouchableOpacity>
         <View style={styles.and}>
           <View style={styles.line} />
@@ -88,12 +133,12 @@ const Login = () => {
         <Image source={require("../assets/images/gg_fb.png")} />
         <View style={styles.addtk}>
           <Text>bạn không có tải khoản?</Text>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={() => navigation.navigate("Register")}>
             <Text style={styles.addRegister}>Tạo tài khoản</Text>
           </TouchableOpacity>
         </View>
       </View>
-    </SafeAreaView>
+    </ScrollView>
   );
 };
 
