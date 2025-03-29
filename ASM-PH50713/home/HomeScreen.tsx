@@ -20,9 +20,9 @@ const HomeScreen = () => {
   const [productToolst, setProductToolst] = useState([]);
   const navigation = useNavigation();
 
-  const apiTree = "http://192.168.31.245:3000/product_tree";
-  const apiPot = "http://192.168.31.245:3000/product_pot";
-  const apiToolst = "http://192.168.31.245:3000/product_tools";
+  const apiTree = "http://10.24.33.130:3000/product_tree";
+  const apiPot = "http://10.24.33.130:3000/product_pot";
+  const apiToolst = "http://10.24.33.130:3000/product_tools";
 
   useEffect(() => {
     console.log("Loading...");
@@ -39,6 +39,7 @@ const HomeScreen = () => {
       setProductTree(treeRes.data);
       setProductPot(potRes.data);
       setProductToolst(toolsRes.data);
+      console.log(toolsRes.data);
     } catch (error) {
       console.error("Lỗi khi tải dữ liệu", error);
     }
@@ -79,6 +80,7 @@ const HomeScreen = () => {
 
         <View style={styles.list}>
           <Text style={styles.sectionTitle}>Cây trồng</Text>
+
           <FlatList
             data={productTree}
             renderItem={renderItem}

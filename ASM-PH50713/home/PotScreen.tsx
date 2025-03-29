@@ -18,7 +18,7 @@ const PotScreen = () => {
   const [productPot, setProductPot] = useState([]);
   const navigation = useNavigation();
 
-  const apiPot = "http://192.168.31.245:3000/product_pot";
+  const apiPot = "http://10.24.33.130:3000/product_pot";
 
   useEffect(() => {
     console.log("Loading...");

@@ -16,8 +16,8 @@ const SearchScreen = () => {
   const [searchResults, setSearchResults] = useState([]);
   const [recentSearches, setRecentSearches] = useState([]);
 
-  const apiTree = "http://192.168.31.245:3000/product_tree";
-  const apiPot = "http://192.168.31.245:3000/product_pot";
+  const apiTree = "http://10.24.33.130:3000/product_tree";
+  const apiPot = "http://10.24.33.130:3000/product_pot";
 
   const handleSearch = async (text) => {
     setSearchText(text);

@@ -23,7 +23,7 @@ const TreeScreen = () => {
   const [filteredTree, setFilteredTree] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("all");
   const navigation = useNavigation();
-  const apiTree = "http://192.168.31.245:3000/product_tree";
+  const apiTree = "http://10.24.33.130:3000/product_tree";
 
   useEffect(() => {
     getList();

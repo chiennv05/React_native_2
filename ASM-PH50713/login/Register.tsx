@@ -20,7 +20,7 @@ const Register = () => {
   const [phone, setPhone] = useState("");
   const navigation = useNavigation();
 
-  const apiLogin = "http://192.168.31.245:3000/LOGIN";
+  const apiLogin = "http://10.24.33.130:3000/LOGIN";
   const handleRegister = async () => {
     if (!username || !email || !phone || !password) {
       alert("Vui lòng nhập đầy đủ thông tin");

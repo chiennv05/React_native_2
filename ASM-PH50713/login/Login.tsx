@@ -21,7 +21,7 @@ const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const navigation = useNavigation();
 
-  const apiLogin = "http://192.168.31.245:3000/LOGIN"; // Thay bằng API thực tế
+  const apiLogin = "http://10.24.33.130:3000/LOGIN"; // Thay bằng API thực tế
 
   const handleLogin = async () => {
     if (!username || !password) {

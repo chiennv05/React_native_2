@@ -18,7 +18,7 @@ const ToolsSecreen = () => {
   const [productToolst, setProductToolst] = useState([]);
   const navigation = useNavigation();
 
-  const apiToolst = "http://192.168.31.245:3000/product_tools";
+  const apiToolst = "http://10.24.33.130:3000/product_tools";
 
   useEffect(() => {
     console.log("Loading...");
