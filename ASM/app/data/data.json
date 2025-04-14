@@ -2,35 +2,34 @@
   "users": [
     {
       "id": "US1",
-      "name": "Nguyễn Văn A",
+      "name": "Nguyễn",
       "email": "admin@admin.com",
       "password": "admin",
       "phone": "0123456789",
       "address": "Số 1, Đại Cồ Việt, Hai Bà Trưng, Hà Nội",
-      "role": "admin",
       "avatar": "file:///data/user/0/host.exp.exponent/cache/ExperienceData/%2540anonymous%252FASM-7389b51e-8d62-45cc-8f31-85fa28cd25dc/ImagePicker/a956c655-45f6-4624-9f57-61b6b8929193.jpeg"
     },
     {
       "id": "US257",
-      "name": "chiennnn",
-      "email": "chien@gmail.com",
-      "password": "chien123@",
+      "name": "nguyyen van c",
+      "email": "t@gmail.com",
+      "password": "tttt123@",
       "phone": "0977756563",
       "address": "my dinh",
       "avatar": ""
     },
     {
       "id": "US956",
-      "name": "chien 1",
-      "email": "thai@gmail.com",
-      "password": "chien123@",
+      "name": "dat",
+      "email": "dat@gmail.com",
+      "password": "dat123@",
       "phone": "0977756563",
       "address": "my dinh",
       "avatar": "file:///data/user/0/host.exp.exponent/cache/ExperienceData/%2540anonymous%252FASM-7389b51e-8d62-45cc-8f31-85fa28cd25dc/ImagePicker/8fb7faca-17e0-4ad8-a730-eacc71b29dd2.jpeg"
     },
     {
       "id": "US535",
-      "name": "Nguyễn Văn Chiến",
+      "name": "Nguyễn Văn C",
       "email": "t@t.com",
       "password": "chien123@",
       "phone": "0977756563",
@@ -550,6 +549,66 @@
       "phone": "0977756563",
       "status": "completed",
       "createdAt": "2025-04-11T16:01:17.715Z"
+    },
+    {
+      "id": "OR1744435081374",
+      "userId": "US257",
+      "items": [
+        {
+          "id": "PL2",
+          "quantity": 2,
+          "price": "250.000",
+          "name": "Song of India"
+        }
+      ],
+      "total": 515000,
+      "shippingFee": 15000,
+      "deliveryMethod": 1,
+      "payMethod": 1,
+      "address": "my dinh",
+      "phone": "0977756563",
+      "status": "completed",
+      "createdAt": "2025-04-12T05:18:01.374Z"
+    },
+    {
+      "id": "OR1744528556165",
+      "userId": "US1",
+      "items": [
+        {
+          "id": "PL1",
+          "quantity": 3,
+          "price": "240.000",
+          "name": "Spider Plant"
+        }
+      ],
+      "total": 740000,
+      "shippingFee": 20000,
+      "deliveryMethod": 2,
+      "payMethod": 1,
+      "address": "Số 1, Đại Cồ Việt, Hai Bà Trưng, Hà Nội",
+      "phone": "0123456789",
+      "status": "completed",
+      "createdAt": "2025-04-13T07:15:56.166Z"
+    },
+    {
+      "id": "OR1744528747133",
+      "userId": "US1",
+      "items": [
+        {
+          "id": "PL4",
+          "quantity": 2,
+          "price": "180.000",
+          "name": "Grey Star Calarthea"
+        }
+      ],
+      "total": 375000,
+      "shippingFee": 15000,
+      "deliveryMethod": 1,
+      "payMethod": 1,
+      "address": "Số 1, Đại Cồ Việt, Hai Bà Trưng, Hà Nội",
+      "phone": "0123456789",
+      "status": "completed",
+      "createdAt": "2025-04-13T07:19:07.133Z"
     }
   ]
 }
